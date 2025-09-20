@@ -1,8 +1,8 @@
 namespace MappingTool
 {
-    public partial class Form1 : Form
+    public partial class frmMappingTool : Form
     {
-        public Form1()
+        public frmMappingTool()
         {
             InitializeComponent();
         }
