@@ -28,133 +28,125 @@
         /// </summary>
         private void InitializeComponent()
         {
-            pnlMain = new TableLayoutPanel();
-            chkEnabled = new CheckBox();
-            chkIdentity = new CheckBox();
-            txtTypeNet = new TextBox();
-            txtTypeSql = new TextBox();
-            txtName = new TextBox();
-            chkPrimary = new CheckBox();
-            pnlMain.SuspendLayout();
+            PnlMain = new TableLayoutPanel();
+            ChkEnabled = new CheckBox();
+            ChkIdentity = new CheckBox();
+            TxtTypeNet = new TextBox();
+            TxtTypeSql = new TextBox();
+            TxtName = new TextBox();
+            ChkPrimary = new CheckBox();
+            PnlMain.SuspendLayout();
             SuspendLayout();
             // 
-            // pnlMain
+            // PnlMain
             // 
-            pnlMain.ColumnCount = 6;
-            pnlMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
-            pnlMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
-            pnlMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 40F));
-            pnlMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15F));
-            pnlMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15F));
-            pnlMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
-            pnlMain.Controls.Add(chkEnabled, 0, 0);
-            pnlMain.Controls.Add(chkIdentity, 5, 0);
-            pnlMain.Controls.Add(txtTypeNet, 4, 0);
-            pnlMain.Controls.Add(txtTypeSql, 3, 0);
-            pnlMain.Controls.Add(txtName, 2, 0);
-            pnlMain.Controls.Add(chkPrimary, 1, 0);
-            pnlMain.Dock = DockStyle.Fill;
-            pnlMain.Location = new Point(0, 0);
-            pnlMain.Margin = new Padding(3, 4, 3, 4);
-            pnlMain.Name = "pnlMain";
-            pnlMain.RowCount = 1;
-            pnlMain.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            pnlMain.Size = new Size(617, 40);
-            pnlMain.TabIndex = 0;
+            PnlMain.ColumnCount = 6;
+            PnlMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
+            PnlMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
+            PnlMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 40F));
+            PnlMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15F));
+            PnlMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15F));
+            PnlMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
+            PnlMain.Controls.Add(ChkEnabled, 0, 0);
+            PnlMain.Controls.Add(ChkIdentity, 5, 0);
+            PnlMain.Controls.Add(TxtTypeNet, 4, 0);
+            PnlMain.Controls.Add(TxtTypeSql, 3, 0);
+            PnlMain.Controls.Add(TxtName, 2, 0);
+            PnlMain.Controls.Add(ChkPrimary, 1, 0);
+            PnlMain.Dock = DockStyle.Fill;
+            PnlMain.Location = new Point(0, 0);
+            PnlMain.Name = "PnlMain";
+            PnlMain.RowCount = 1;
+            PnlMain.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            PnlMain.Size = new Size(540, 30);
+            PnlMain.TabIndex = 0;
             // 
-            // chkEnabled
+            // ChkEnabled
             // 
-            chkEnabled.AutoSize = true;
-            chkEnabled.CheckAlign = ContentAlignment.MiddleCenter;
-            chkEnabled.Dock = DockStyle.Fill;
-            chkEnabled.Location = new Point(3, 4);
-            chkEnabled.Margin = new Padding(3, 4, 3, 4);
-            chkEnabled.Name = "chkEnabled";
-            chkEnabled.Size = new Size(55, 32);
-            chkEnabled.TabIndex = 6;
-            chkEnabled.TextAlign = ContentAlignment.MiddleCenter;
-            chkEnabled.UseVisualStyleBackColor = true;
-            chkEnabled.CheckedChanged += chkEnabled_CheckedChanged;
+            ChkEnabled.AutoSize = true;
+            ChkEnabled.CheckAlign = ContentAlignment.MiddleCenter;
+            ChkEnabled.Dock = DockStyle.Fill;
+            ChkEnabled.Location = new Point(3, 3);
+            ChkEnabled.Name = "ChkEnabled";
+            ChkEnabled.Size = new Size(48, 24);
+            ChkEnabled.TabIndex = 6;
+            ChkEnabled.TextAlign = ContentAlignment.MiddleCenter;
+            ChkEnabled.UseVisualStyleBackColor = true;
+            ChkEnabled.CheckedChanged += ChkEnabled_CheckedChanged;
             // 
-            // chkIdentity
+            // ChkIdentity
             // 
-            chkIdentity.AutoSize = true;
-            chkIdentity.CheckAlign = ContentAlignment.MiddleCenter;
-            chkIdentity.Dock = DockStyle.Fill;
-            chkIdentity.Location = new Point(555, 4);
-            chkIdentity.Margin = new Padding(3, 4, 3, 4);
-            chkIdentity.Name = "chkIdentity";
-            chkIdentity.Size = new Size(59, 32);
-            chkIdentity.TabIndex = 4;
-            chkIdentity.TextAlign = ContentAlignment.MiddleCenter;
-            chkIdentity.UseVisualStyleBackColor = true;
-            chkIdentity.CheckedChanged += chkIdentity_CheckedChanged;
+            ChkIdentity.AutoSize = true;
+            ChkIdentity.CheckAlign = ContentAlignment.MiddleCenter;
+            ChkIdentity.Dock = DockStyle.Fill;
+            ChkIdentity.Location = new Point(489, 3);
+            ChkIdentity.Name = "ChkIdentity";
+            ChkIdentity.Size = new Size(48, 24);
+            ChkIdentity.TabIndex = 4;
+            ChkIdentity.TextAlign = ContentAlignment.MiddleCenter;
+            ChkIdentity.UseVisualStyleBackColor = true;
+            ChkIdentity.CheckedChanged += ChkIdentity_CheckedChanged;
             // 
-            // txtTypeNet
+            // TxtTypeNet
             // 
-            txtTypeNet.Dock = DockStyle.Fill;
-            txtTypeNet.Location = new Point(463, 4);
-            txtTypeNet.Margin = new Padding(3, 4, 3, 4);
-            txtTypeNet.Name = "txtTypeNet";
-            txtTypeNet.ReadOnly = true;
-            txtTypeNet.Size = new Size(86, 27);
-            txtTypeNet.TabIndex = 2;
+            TxtTypeNet.Dock = DockStyle.Fill;
+            TxtTypeNet.Location = new Point(408, 3);
+            TxtTypeNet.Name = "TxtTypeNet";
+            TxtTypeNet.ReadOnly = true;
+            TxtTypeNet.Size = new Size(75, 23);
+            TxtTypeNet.TabIndex = 2;
             // 
-            // txtTypeSql
+            // TxtTypeSql
             // 
-            txtTypeSql.Dock = DockStyle.Fill;
-            txtTypeSql.Location = new Point(371, 4);
-            txtTypeSql.Margin = new Padding(3, 4, 3, 4);
-            txtTypeSql.Name = "txtTypeSql";
-            txtTypeSql.ReadOnly = true;
-            txtTypeSql.Size = new Size(86, 27);
-            txtTypeSql.TabIndex = 1;
+            TxtTypeSql.Dock = DockStyle.Fill;
+            TxtTypeSql.Location = new Point(327, 3);
+            TxtTypeSql.Name = "TxtTypeSql";
+            TxtTypeSql.ReadOnly = true;
+            TxtTypeSql.Size = new Size(75, 23);
+            TxtTypeSql.TabIndex = 1;
             // 
-            // txtName
+            // TxtName
             // 
-            txtName.Dock = DockStyle.Fill;
-            txtName.Location = new Point(125, 4);
-            txtName.Margin = new Padding(3, 4, 3, 4);
-            txtName.Name = "txtName";
-            txtName.ReadOnly = true;
-            txtName.Size = new Size(240, 27);
-            txtName.TabIndex = 0;
+            TxtName.Dock = DockStyle.Fill;
+            TxtName.Location = new Point(111, 3);
+            TxtName.Name = "TxtName";
+            TxtName.ReadOnly = true;
+            TxtName.Size = new Size(210, 23);
+            TxtName.TabIndex = 0;
             // 
-            // chkPrimary
+            // ChkPrimary
             // 
-            chkPrimary.AutoSize = true;
-            chkPrimary.CheckAlign = ContentAlignment.MiddleCenter;
-            chkPrimary.Dock = DockStyle.Fill;
-            chkPrimary.Location = new Point(64, 4);
-            chkPrimary.Margin = new Padding(3, 4, 3, 4);
-            chkPrimary.Name = "chkPrimary";
-            chkPrimary.Size = new Size(55, 32);
-            chkPrimary.TabIndex = 5;
-            chkPrimary.TextAlign = ContentAlignment.MiddleCenter;
-            chkPrimary.UseVisualStyleBackColor = true;
-            chkPrimary.CheckedChanged += chkPrimary_CheckedChanged;
+            ChkPrimary.AutoSize = true;
+            ChkPrimary.CheckAlign = ContentAlignment.MiddleCenter;
+            ChkPrimary.Dock = DockStyle.Fill;
+            ChkPrimary.Location = new Point(57, 3);
+            ChkPrimary.Name = "ChkPrimary";
+            ChkPrimary.Size = new Size(48, 24);
+            ChkPrimary.TabIndex = 5;
+            ChkPrimary.TextAlign = ContentAlignment.MiddleCenter;
+            ChkPrimary.UseVisualStyleBackColor = true;
+            ChkPrimary.CheckedChanged += ChkPrimary_CheckedChanged;
             // 
             // ColumnInfo
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(pnlMain);
-            Margin = new Padding(3, 4, 3, 4);
+            Controls.Add(PnlMain);
             Name = "ColumnInfo";
-            Size = new Size(617, 40);
-            pnlMain.ResumeLayout(false);
-            pnlMain.PerformLayout();
+            Size = new Size(540, 30);
+            PnlMain.ResumeLayout(false);
+            PnlMain.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private TableLayoutPanel pnlMain;
-        private TextBox txtTypeSql;
-        private TextBox txtName;
-        private TextBox txtTypeNet;
-        private CheckBox chkIdentity;
-        private CheckBox chkPrimary;
-        private CheckBox chkEnabled;
+        private TableLayoutPanel PnlMain;
+        private TextBox TxtTypeSql;
+        private TextBox TxtName;
+        private TextBox TxtTypeNet;
+        private CheckBox ChkIdentity;
+        private CheckBox ChkPrimary;
+        private CheckBox ChkEnabled;
     }
 }

@@ -58,9 +58,9 @@ namespace MappingTool.Parser
             Dictionary<string, Column> columns = [];
             foreach (string columnDefinition in queryColumns)
             {
-                string[] columnData = columnDefinition.Split(' ');
                 Column column = new();
-
+                string[] columnData = columnDefinition.Split(' ');
+                
                 column.Name = QueryColumn.GetColumnName(columnData[0]);
                 (column.TypeSql, column.TypeNet) = QueryColumn.GetColumnType(columnData[1]);
                 column.SizeSql = QueryColumn.GetColumnSize(columnData[1]);

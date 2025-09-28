@@ -19,8 +19,8 @@ namespace MappingTool
         private void BtnProcessQuery_Click(object sender, EventArgs e)
         {
             // Query
-            Query query = new(txtQuery.Text);
-            txtQuery.Text = query.ParsedQuery;
+            Query query = new(TxtQuery.Text);
+            TxtQuery.Text = query.ParsedQuery;
 
             // Build Table
             table.QualifiedName = QueryTable.GetQualifiedName(query.TableNameQuery);
@@ -28,18 +28,18 @@ namespace MappingTool
 
             // Column header
             MappingTool.Controls.ColumnHeader columnHeader = new();
-            pnlColumns.Controls.Add(columnHeader);
-            columnHeader.Width = pnlColumns.Width - 30;
-            pnlColumns.SetFlowBreak(columnHeader, false);
+            PnlColumns.Controls.Add(columnHeader);
+            columnHeader.Width = PnlColumns.Width - 30;
+            PnlColumns.SetFlowBreak(columnHeader, false);
 
             // Column rows
-            pnlColumns.Controls.Clear();
+            PnlColumns.Controls.Clear();
             foreach (KeyValuePair<string, Column> column in table.Columns)
             {
                 ColumnInfo columnInfo = new(column.Value);
-                pnlColumns.Controls.Add(columnInfo);
-                columnInfo.Width = pnlColumns.Width - 30;
-                pnlColumns.SetFlowBreak(columnInfo, false);
+                PnlColumns.Controls.Add(columnInfo);
+                columnInfo.Width = PnlColumns.Width - 30;
+                PnlColumns.SetFlowBreak(columnInfo, false);
             }
         }
 
