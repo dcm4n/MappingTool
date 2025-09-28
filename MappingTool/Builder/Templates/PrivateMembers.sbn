@@ -1,0 +1,7 @@
+﻿#region PRIVATE MEMBERS
+
+{{~ for m in private_members ~}}
+protected {{ m.type_net }}{{ if m.nullable }}?{{ end }} {{ m.name }}; 
+{{~ end ~}}
+
+#endregion

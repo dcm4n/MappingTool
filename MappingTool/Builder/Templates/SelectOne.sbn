@@ -1,0 +1,11 @@
+﻿#region PUBLIC METHODS - SELECT ONE RECORD BY PRIMARY KEY
+
+protected {{ class_name }} GetSelectOneCommand()
+{
+	{{ class_name }} {{ class_name }} = new {{ class_name }}();
+
+	
+
+}
+
+#endregion

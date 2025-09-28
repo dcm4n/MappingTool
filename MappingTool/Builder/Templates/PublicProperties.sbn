@@ -1,0 +1,11 @@
+﻿#region PUBLIC PROPERTIES
+
+// Ready to copy-paste in inherited classes :)
+
+/*
+{{~ for p in public_properties ~}}
+public {{ p.type_net }}{{ if p.nullable }}?{{ end }} {{ p.public_name }} { get { return {{ p.private_name }}; } set { {{ p.private_name }} = value; } }
+{{~ end ~}}
+*/
+
+#endregion
