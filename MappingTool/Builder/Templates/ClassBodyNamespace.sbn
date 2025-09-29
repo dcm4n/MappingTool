@@ -1,0 +1,4 @@
+﻿namespace {{ class_namespace }}
+{
+    {{ class_body }}
+}

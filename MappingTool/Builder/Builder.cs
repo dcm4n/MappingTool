@@ -1,5 +1,4 @@
 ﻿using MappingTool.Objects;
-using System.Data;
 using System.Reflection;
 
 namespace MappingTool.Builder
@@ -15,13 +14,16 @@ namespace MappingTool.Builder
 
         // --
 
+        private const string classHeaderTemplatePath = "MappingTool.Builder.Templates.ClassHeader.sbn";
+        private const string classBodyTemplatePath = "MappingTool.Builder.Templates.ClassBody.sbn";     
+        private const string classBodyNamespaceTemplatePath = "MappingTool.Builder.Templates.ClassBodyNamespace.sbn";
         private const string classTemplatePath = "MappingTool.Builder.Templates.Class.sbn";
 
         #endregion
 
         #region PRIVATE MEMBERS
 
-        private readonly Table table;
+        private readonly Class tableClass;
 
         private readonly Scriban.Template columnsTemplate = GetTemplate(columnsTemplatePath);
         private readonly object columnsModel;
@@ -41,14 +43,26 @@ namespace MappingTool.Builder
 
         // --
 
+        private readonly Scriban.Template classHeaderTemplate = GetTemplate(classHeaderTemplatePath);
+        private readonly object classHeaderModel;
+        private readonly string classHeaderString;
+
+        private readonly Scriban.Template classBodyTemplate = GetTemplate(classBodyTemplatePath);
+        private readonly object classBodyModel;
+        private readonly string classBodyString;
+
+        private readonly Scriban.Template classBodyNamepsaceTemplate = GetTemplate(classBodyNamespaceTemplatePath);
+        private readonly object? classBodyNamespaceModel;
+        private readonly string? classBodyNamespaceString;
+
         private readonly Scriban.Template classTemplate = GetTemplate(classTemplatePath);
         private readonly object classModel;
 
         #endregion
 
-        public Builder(Table tableObject) 
-        { 
-            table = tableObject;
+        public Builder(Class tableClass) 
+        {
+            this.tableClass = tableClass;
 
             columnsModel = GetColumnsModel();
             columnsString = columnsTemplate.Render(columnsModel);
@@ -62,23 +76,71 @@ namespace MappingTool.Builder
             selectAllModel = GetSelectAllModel();
             selectAllString = selectAllTemplate.Render(selectAllModel);
 
+            // --
+
+            classHeaderModel = GetClassHeaderModel();
+            classHeaderString = classHeaderTemplate.Render(classHeaderModel);
+
+            classBodyModel = GetClassBodyModel();
+            classBodyString = classBodyTemplate.Render(classBodyModel);
+
+            if (tableClass.UseNamespace)
+            {
+                classBodyNamespaceModel = GetClassBodyNamespaceModel();
+                classBodyNamespaceString = classBodyNamepsaceTemplate.Render(classBodyNamespaceModel);
+            }
+
             classModel = GetClassModel();
             string result = classTemplate.Render(classModel);
         }
 
         #region CLASS MODEL
 
-        private object GetClassModel()
+        private object GetClassHeaderModel()
         {
             object data = new
             {
                 usings = new List<String> { "System.Data", "Microsoft.Data.SqlClient" },
                 date = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss"),
-                className = table.QualifiedName.Table,
+                className = tableClass.Name,
+            };
+            return data;
+        }
+
+        private object GetClassBodyModel()
+        {
+            object data = new
+            {
+                className = tableClass.Name,
                 columns = columnsString,
                 privateMembers = privateMembersString,
                 publicProperties = publicPropertiesString,
                 selectAll = selectAllString,
+            };
+            return data;
+        }
+
+        private object GetClassBodyNamespaceModel()
+        {
+            object data = new
+            {
+                classNamespace = tableClass.Namespace,
+                classBody = classBodyString
+            };
+            return data;
+        }
+
+
+        private object GetClassModel()
+        {
+            string classBody;
+            if (tableClass.UseNamespace) { classBody = classBodyNamespaceString; }
+            else { classBody = classBodyString; }
+
+            object data = new
+            {
+                classHeader = classHeaderString,
+                classBody = classBody
             };
             return data;
         }
@@ -90,7 +152,7 @@ namespace MappingTool.Builder
         private object GetColumnsModel()
         {
             List<object> columns = [];
-            foreach (KeyValuePair<string, Column> column in table.ColumnsEnabled)
+            foreach (KeyValuePair<string, Column> column in tableClass.Table.ColumnsEnabled)
             {
                 columns.Add(new 
                 { 
@@ -114,7 +176,7 @@ namespace MappingTool.Builder
         private object GetPrivateMembersModel()
         {
             List<object> privateMembers = [];
-            foreach (KeyValuePair<string, Column> column in table.ColumnsEnabled)
+            foreach (KeyValuePair<string, Column> column in tableClass.Table.ColumnsEnabled)
             {
                 privateMembers.Add (new{ name = TocamelCaseString(column.Value.Name), typeNet = column.Value.TypeNet.Name, nullable = column.Value.Nullable});
             }
@@ -129,7 +191,7 @@ namespace MappingTool.Builder
         private object GetPublicPropertiesModel()
         {
             List<object> publicProperties = [];
-            foreach (KeyValuePair<string, Column> column in table.ColumnsEnabled)
+            foreach (KeyValuePair<string, Column> column in tableClass.Table.ColumnsEnabled)
             {
                 publicProperties.Add(new { publicName = column.Value.Name, privateName = TocamelCaseString(column.Value.Name), typeNet = column.Value.TypeNet.Name, nullable = column.Value.Nullable });
             }
@@ -144,15 +206,14 @@ namespace MappingTool.Builder
         private object GetSelectAllModel()
         {
             List<object> columns = [];
-            foreach (KeyValuePair<string, Column> column in table.ColumnsEnabled)
+            foreach (KeyValuePair<string, Column> column in tableClass.Table.ColumnsEnabled)
             {
                 columns.Add(new { name = column.Value.Name });
             }
-            return new { tableName = table.QualifiedName.Table, columns };
+            return new { tableName = tableClass.Table.QualifiedName.Table, columns };
         }
 
         #endregion
-
 
         #region HELPERS
 
@@ -173,6 +234,5 @@ namespace MappingTool.Builder
         }
 
         #endregion
-
     }
 }

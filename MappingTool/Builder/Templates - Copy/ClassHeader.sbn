@@ -1,0 +1,19 @@
+﻿{{ for u in usings ~}}
+using {{ u }};
+{{ end ~}}
+
+// {{ class_name }}.cs
+// Auto-generated on {{ date }} 
+
+public class {{ class_name }}
+{
+
+    {{ columns }}
+
+    {{ private_members }}
+
+    {{ public_properties }}
+
+    {{ select_all }}
+
+}

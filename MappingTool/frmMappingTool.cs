@@ -10,6 +10,7 @@ namespace MappingTool
     public partial class FrmMappingTool : Form
     {
         private readonly Table table = new();
+        private Class? tableClass;
 
         public FrmMappingTool()
         {
@@ -22,9 +23,10 @@ namespace MappingTool
             Query query = new(TxtQuery.Text);
             TxtQuery.Text = query.ParsedQuery;
 
-            // Build Table
+            // Build Class
             table.QualifiedName = QueryTable.GetQualifiedName(query.TableNameQuery);
             table.Columns = QueryTable.GetColumns(query.ColumnQueries);
+            tableClass = new Class(table);
 
             // Column header
             MappingTool.Controls.ColumnHeader columnHeader = new();
@@ -46,7 +48,11 @@ namespace MappingTool
         private void BtnGenerateClass_Click(object sender, EventArgs e)
         {
             table.SetColumnsEnabled();
-            Builder.Builder b = new(table);
+            //tableClass.UseNamespace = true;
+            //tableClass.Namespace = "Test.Test";
+
+            if (tableClass is not null) { Builder.Builder b = new(tableClass); }
+           
         }
 
     }

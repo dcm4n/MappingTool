@@ -17,15 +17,12 @@ namespace MappingTool.Objects
         private Dictionary<string, Column> columns = [];
         private Dictionary<string, Column> columnsEnabled = [];
         
-
         #endregion
 
         #region PUBLIC PROPERTIES
 
         public QualifiedName QualifiedName { get => qualifiedName; set => qualifiedName = value; }
-
         public Dictionary<string, Column> Columns { get => columns; set => columns = value; }
-
         public Dictionary<string, Column> ColumnsEnabled { get => columnsEnabled; set => columnsEnabled = value; }
 
         #endregion

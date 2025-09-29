@@ -1,0 +1,12 @@
+﻿public class {{ class_name }}
+{
+
+    {{ columns }}
+
+    {{ private_members }}
+
+    {{ public_properties }}
+
+    {{ select_all }}
+
+}

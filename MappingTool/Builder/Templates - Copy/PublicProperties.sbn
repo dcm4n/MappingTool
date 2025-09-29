@@ -1,6 +1,6 @@
 ﻿#region PUBLIC PROPERTIES
 
-// Ready to copy-paste into inherited classes :)
+// Ready to copy-paste in inherited classes :)
 
 /*
 {{~ for p in public_properties ~}}

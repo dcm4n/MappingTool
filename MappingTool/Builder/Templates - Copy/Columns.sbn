@@ -1,0 +1,21 @@
+﻿#region COLUMNS
+
+protected struct Column
+{
+    public string Name;
+    public SqlDbType TypeSql;
+    public int SizeSql;
+    public Type TypeNet;
+    public bool Nullable;
+    public bool Primary;
+    public bool Identity;
+}
+
+protected static readonly Dictionary<string, Column> SqlColumns = new Dictionary<string, Column>()
+{
+	{{~ for c in columns ~}}
+    { "{{ c.name }}", new Column() { Name = "{{ c.name }}", TypeSql = {{ c.type_sql }}, SizeSql = {{ c.size_sql }}, TypeNet = {{ c.type_net }}, Nullable = {{ c.nullable }}, Primary = {{ c.primary }}, Identity = {{ c.identity }} }}{{ if !for.last}},{{ end }}
+	{{~ end ~}}
+};
+
+#endregion
