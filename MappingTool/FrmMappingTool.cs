@@ -9,9 +9,6 @@ namespace MappingTool
 {
     public partial class FrmMappingTool : Form
     {
-        private readonly Table table = new();
-        private Class? tableClass;
-
         public FrmMappingTool()
         {
             InitializeComponent();
@@ -23,18 +20,25 @@ namespace MappingTool
             Query query = new(TxtQuery.Text);
             TxtQuery.Text = query.ParsedQuery;
 
-            // Build Class
-            table.QualifiedName = QueryTable.GetQualifiedName(query.TableNameQuery);
-            table.Columns = QueryTable.GetColumns(query.ColumnQueries);
-            tableClass = new Class(table);
+            // Build temp Table
+            Table table = new()
+            {
+                QualifiedName = QueryTable.GetQualifiedNameFromQuery(query.TableNameQuery),
+                Columns = QueryTable.GetColumnsFromQuery(query.ColumnQueries)
+            };
 
-            // Column header
-            MappingTool.Controls.ColumnHeader columnHeader = new();
-            PnlColumns.Controls.Add(columnHeader);
-            columnHeader.Width = PnlColumns.Width - 30;
-            PnlColumns.SetFlowBreak(columnHeader, false);
+            // Paint FRM Class info
+            //ChkUseNamespace.Checked = false;
+            //TxtClassNamespace.Text = string.Empty;
+            //TxtClassName.Text = table.QualifiedName.Table;
 
-            // Column rows
+            // Paint FRM Table info
+            //TxtTableDatabase.Text = table.QualifiedName.Database;
+            //TxtTableSchema.Text = table.QualifiedName.Schema;
+            //TxtTableName.Text = table.QualifiedName.Table;
+
+            // Paint FRM Column rows
+            PnlColumns.SuspendLayout();
             PnlColumns.Controls.Clear();
             foreach (KeyValuePair<string, Column> column in table.Columns)
             {
@@ -43,17 +47,51 @@ namespace MappingTool
                 columnInfo.Width = PnlColumns.Width - 30;
                 PnlColumns.SetFlowBreak(columnInfo, false);
             }
+            PnlColumns.ResumeLayout();
         }
 
         private void BtnGenerateClass_Click(object sender, EventArgs e)
         {
-            table.SetColumnsEnabled();
-            //tableClass.UseNamespace = true;
-            //tableClass.Namespace = "Test.Test";
+            // Build table class from frm
+            Table table = new()
+            {
+                QualifiedName = GetQulifiedNameFromFrm(),
+                Columns = GetColumnsFromFrm()
+            };
 
-            if (tableClass is not null) { Builder.Builder b = new(tableClass); }
-           
+            // Build table class from frm
+            Class frmTableClass = new()
+            {
+                //UseNamespace = ChkUseNamespace.Checked,
+                //Namespace = TxtClassNamespace.Text,
+                //Name = TxtClassName.Text,
+                Table = table
+            };
+
+            // Build class
+            Builder.Builder builder = new(frmTableClass);        
         }
 
+        private QualifiedName GetQulifiedNameFromFrm()
+        {
+            QualifiedName qualifiedName = new()
+            {
+                //Database = TxtTableDatabase.Text,
+                //Schema = TxtTableSchema.Text,
+                //Table = TxtTableName.Text
+            };
+
+            return qualifiedName;
+        }
+
+        private Dictionary<string, Column> GetColumnsFromFrm()
+        {
+            Dictionary<string, Column> columns = [];
+            foreach (ColumnInfo columnInfo in PnlColumns.Controls)
+            {
+                if (columnInfo.Column.Enabled) { columns.Add(columnInfo.Column.Name, columnInfo.Column); }
+            }
+            return columns;
+        }
     }
 }

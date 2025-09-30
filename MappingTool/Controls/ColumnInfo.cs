@@ -8,6 +8,8 @@ namespace MappingTool.Controls
     {
         private readonly Column column;
 
+        public Column Column { get => column; }
+
         public ColumnInfo(Column column)
         {
             InitializeComponent();

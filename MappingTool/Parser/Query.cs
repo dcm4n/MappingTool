@@ -37,11 +37,8 @@ namespace MappingTool.Parser
                 MessageBox.Show("Error", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
-
             rawQuery = ProcessQuery(query);
             parsedQuery = ParseQuery();
-
         }
 
         #region VALIDATION
@@ -180,7 +177,6 @@ namespace MappingTool.Parser
                     }
                 }
             }
-
             return parsedQuery;
         }
 

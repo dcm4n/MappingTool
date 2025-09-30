@@ -14,7 +14,7 @@ namespace MappingTool.Parser
     {
         #region TABLE NAME
 
-        public static QualifiedName GetQualifiedName(string queryCreateTable)
+        public static QualifiedName GetQualifiedNameFromQuery(string queryCreateTable)
         {
             QualifiedName qualifiedName = new();
             string qualifiedTableName = ParseCreateTableQuery(queryCreateTable);
@@ -53,7 +53,7 @@ namespace MappingTool.Parser
 
         #region COLUMNS
 
-        public static Dictionary<string, Column> GetColumns(List<string> queryColumns)
+        public static Dictionary<string, Column> GetColumnsFromQuery(List<string> queryColumns)
         {
             Dictionary<string, Column> columns = [];
             foreach (string columnDefinition in queryColumns)

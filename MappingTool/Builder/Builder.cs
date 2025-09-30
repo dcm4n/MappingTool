@@ -152,7 +152,7 @@ namespace MappingTool.Builder
         private object GetColumnsModel()
         {
             List<object> columns = [];
-            foreach (KeyValuePair<string, Column> column in tableClass.Table.ColumnsEnabled)
+            foreach (KeyValuePair<string, Column> column in tableClass.Table.Columns)
             {
                 columns.Add(new 
                 { 
@@ -176,7 +176,7 @@ namespace MappingTool.Builder
         private object GetPrivateMembersModel()
         {
             List<object> privateMembers = [];
-            foreach (KeyValuePair<string, Column> column in tableClass.Table.ColumnsEnabled)
+            foreach (KeyValuePair<string, Column> column in tableClass.Table.Columns)
             {
                 privateMembers.Add (new{ name = TocamelCaseString(column.Value.Name), typeNet = column.Value.TypeNet.Name, nullable = column.Value.Nullable});
             }
@@ -191,7 +191,7 @@ namespace MappingTool.Builder
         private object GetPublicPropertiesModel()
         {
             List<object> publicProperties = [];
-            foreach (KeyValuePair<string, Column> column in tableClass.Table.ColumnsEnabled)
+            foreach (KeyValuePair<string, Column> column in tableClass.Table.Columns)
             {
                 publicProperties.Add(new { publicName = column.Value.Name, privateName = TocamelCaseString(column.Value.Name), typeNet = column.Value.TypeNet.Name, nullable = column.Value.Nullable });
             }
@@ -206,7 +206,7 @@ namespace MappingTool.Builder
         private object GetSelectAllModel()
         {
             List<object> columns = [];
-            foreach (KeyValuePair<string, Column> column in tableClass.Table.ColumnsEnabled)
+            foreach (KeyValuePair<string, Column> column in tableClass.Table.Columns)
             {
                 columns.Add(new { name = column.Value.Name });
             }

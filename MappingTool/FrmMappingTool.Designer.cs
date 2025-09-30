@@ -37,6 +37,7 @@
             TxtQuery = new RichTextBox();
             BtnProcessQuery = new Button();
             PnlHeader = new TableLayoutPanel();
+            columnHeader1 = new MappingTool.Controls.ColumnHeader();
             PnlMain.SuspendLayout();
             PnlBody.SuspendLayout();
             PnlInfo.SuspendLayout();
@@ -77,12 +78,14 @@
             // 
             PnlInfo.ColumnCount = 1;
             PnlInfo.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            PnlInfo.Controls.Add(BtnGenerateClass, 0, 1);
-            PnlInfo.Controls.Add(PnlColumns, 0, 0);
+            PnlInfo.Controls.Add(PnlColumns, 0, 1);
+            PnlInfo.Controls.Add(BtnGenerateClass, 0, 2);
+            PnlInfo.Controls.Add(columnHeader1, 0, 0);
             PnlInfo.Dock = DockStyle.Fill;
             PnlInfo.Location = new Point(770, 3);
             PnlInfo.Name = "PnlInfo";
-            PnlInfo.RowCount = 2;
+            PnlInfo.RowCount = 3;
+            PnlInfo.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));
             PnlInfo.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             PnlInfo.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));
             PnlInfo.Size = new Size(761, 773);
@@ -90,7 +93,6 @@
             // 
             // BtnGenerateClass
             // 
-            BtnGenerateClass.Dock = DockStyle.Fill;
             BtnGenerateClass.Location = new Point(3, 716);
             BtnGenerateClass.Name = "BtnGenerateClass";
             BtnGenerateClass.Size = new Size(755, 54);
@@ -102,11 +104,10 @@
             // PnlColumns
             // 
             PnlColumns.AutoScroll = true;
-            PnlColumns.Dock = DockStyle.Fill;
             PnlColumns.FlowDirection = FlowDirection.TopDown;
-            PnlColumns.Location = new Point(3, 3);
+            PnlColumns.Location = new Point(3, 63);
             PnlColumns.Name = "PnlColumns";
-            PnlColumns.Size = new Size(755, 707);
+            PnlColumns.Size = new Size(755, 647);
             PnlColumns.TabIndex = 3;
             PnlColumns.WrapContents = false;
             // 
@@ -160,6 +161,14 @@
             PnlHeader.Size = new Size(1534, 54);
             PnlHeader.TabIndex = 1;
             // 
+            // columnHeader1
+            // 
+            columnHeader1.Dock = DockStyle.Fill;
+            columnHeader1.Location = new Point(3, 3);
+            columnHeader1.Name = "columnHeader1";
+            columnHeader1.Size = new Size(755, 54);
+            columnHeader1.TabIndex = 3;
+            // 
             // FrmMappingTool
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -187,5 +196,6 @@
         private RichTextBox TxtQuery;
         private Button BtnProcessQuery;
         private FlowLayoutPanel PnlColumns;
+        private Controls.ColumnHeader columnHeader1;
     }
 }
