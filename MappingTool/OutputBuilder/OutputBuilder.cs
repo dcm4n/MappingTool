@@ -1,29 +1,31 @@
-﻿using MappingTool.Objects;
+﻿using System;
+using MappingTool.Objects;
 using System.Reflection;
 
-namespace MappingTool.Builder
+namespace MappingTool.Output
 {
-    public class Builder
+    public class OutputBuilder
     {
         #region CONSTANTS
 
-        private const string columnsTemplatePath = "MappingTool.Builder.Templates.Columns.sbn";
-        private const string privateMembersTemplatePath = "MappingTool.Builder.Templates.PrivateMembers.sbn";
-        private const string publicPropertiesTemplatePath = "MappingTool.Builder.Templates.PublicProperties.sbn";
-        private const string selectAllTemplatePath = "MappingTool.Builder.Templates.SelectAll.sbn";
+        private const string columnsTemplatePath = "MappingTool.OutputBuilder.Templates.Columns.sbn";
+        private const string privateMembersTemplatePath = "MappingTool.OutputBuilder.Templates.PrivateMembers.sbn";
+        private const string publicPropertiesTemplatePath = "MappingTool.OutputBuilder.Templates.PublicProperties.sbn";
+        private const string selectAllTemplatePath = "MappingTool.OutputBuilder.Templates.SelectAll.sbn";
 
         // --
 
-        private const string classHeaderTemplatePath = "MappingTool.Builder.Templates.ClassHeader.sbn";
-        private const string classBodyTemplatePath = "MappingTool.Builder.Templates.ClassBody.sbn";     
-        private const string classBodyNamespaceTemplatePath = "MappingTool.Builder.Templates.ClassBodyNamespace.sbn";
-        private const string classTemplatePath = "MappingTool.Builder.Templates.Class.sbn";
+        private const string classHeaderTemplatePath = "MappingTool.OutputBuilder.Templates.ClassHeader.sbn";
+        private const string classBodyTemplatePath = "MappingTool.OutputBuilder.Templates.ClassBody.sbn";     
+        private const string classBodyNamespaceTemplatePath = "MappingTool.OutputBuilder.Templates.ClassBodyNamespace.sbn";
+        private const string classTemplatePath = "MappingTool.OutputBuilder.Templates.Class.sbn";
 
         #endregion
 
         #region PRIVATE MEMBERS
 
         private readonly Class tableClass;
+        private readonly string result;
 
         private readonly Scriban.Template columnsTemplate = GetTemplate(columnsTemplatePath);
         private readonly object columnsModel;
@@ -60,7 +62,9 @@ namespace MappingTool.Builder
 
         #endregion
 
-        public Builder(Class tableClass) 
+        public string Result => result;
+
+        public OutputBuilder(Class tableClass) 
         {
             this.tableClass = tableClass;
 
@@ -91,7 +95,7 @@ namespace MappingTool.Builder
             }
 
             classModel = GetClassModel();
-            string result = classTemplate.Render(classModel);
+            result = classTemplate.Render(classModel);
         }
 
         #region CLASS MODEL

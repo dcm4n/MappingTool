@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 
-namespace MappingTool.Parser
+namespace MappingTool.Input
 {
-    public class Query
+    public class InputQuery
     {
         #region PRIVATE MEMBERS
 
-        private readonly string rawQuery = string.Empty;
-        private readonly string parsedQuery = string.Empty;
+        private string rawQuery = string.Empty;
+        private string parsedQuery = string.Empty;
         private string tableNameQuery = string.Empty;
         private readonly List<string> tableColumnQueries = [];
         private string tableAsQuery = string.Empty;
@@ -25,12 +25,11 @@ namespace MappingTool.Parser
         public List<string> ColumnQueries { get => tableColumnQueries; }
         public string AsQuery { get => tableAsQuery; }
         public string OnQuery { get => tableOnQuery; }
-
         public List<string> AlterQueries { get => tableAlterQueries; }
 
         #endregion
 
-        public Query(string query)
+        public InputQuery(string query) 
         {
             if (!ValidateQuery(query))
             {
@@ -68,7 +67,7 @@ namespace MappingTool.Parser
 
         #region PARSE
 
-        public string ParseQuery()
+        private string ParseQuery()
         {
             string parsedQuery = string.Empty;
             int currentPos;
@@ -185,7 +184,7 @@ namespace MappingTool.Parser
         #region HELPERS
 
         // https://learn.microsoft.com/en-us/sql/t-sql/statements/create-table-transact-sql?view=sql-server-ver17#full-syntax
-        public static bool IsColumn(string columnDefinition)
+        private static bool IsColumn(string columnDefinition)
         {
             columnDefinition = columnDefinition.Trim();
             if (columnDefinition.StartsWith("ON", StringComparison.InvariantCultureIgnoreCase)) { return false; }                                                                               // ON ...

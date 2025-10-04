@@ -1,8 +1,9 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 
-namespace MappingTool.Parser
+namespace MappingTool.Input
 {
-    internal static class QueryColumn
+    internal static class InputQueryColumn
     {
 
         #region NAME

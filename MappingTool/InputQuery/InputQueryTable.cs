@@ -1,16 +1,9 @@
-﻿using MappingTool.Objects;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlTypes;
-using System.Linq;
-using System.Security.Principal;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
+using MappingTool.Objects;
 
-namespace MappingTool.Parser
+namespace MappingTool.Input
 {
-    internal static class QueryTable
+    internal static class InputQueryTable
     {
         #region TABLE NAME
 
@@ -53,25 +46,25 @@ namespace MappingTool.Parser
 
         #region COLUMNS
 
-        public static Dictionary<string, Column> GetColumnsFromQuery(List<string> queryColumns)
+        public static Column[] GetColumnsFromQuery(List<string> queryColumns)
         {
-            Dictionary<string, Column> columns = [];
+            List<Column> columns = [];
             foreach (string columnDefinition in queryColumns)
             {
                 Column column = new();
                 string[] columnData = columnDefinition.Split(' ');
                 
-                column.Name = QueryColumn.GetColumnName(columnData[0]);
-                (column.TypeSql, column.TypeNet) = QueryColumn.GetColumnType(columnData[1]);
-                column.SizeSql = QueryColumn.GetColumnSize(columnData[1]);
-                column.Nullable = QueryColumn.GetColumnNullable(columnDefinition);
-                column.Primary = QueryColumn.GetColumnPrimary(columnDefinition);
-                column.Identity = QueryColumn.GetColumnIdentity(columnDefinition);
+                column.Name = InputQueryColumn.GetColumnName(columnData[0]);
+                (column.TypeSql, column.TypeNet) = InputQueryColumn.GetColumnType(columnData[1]);
+                column.SizeSql = InputQueryColumn.GetColumnSize(columnData[1]);
+                column.Nullable = InputQueryColumn.GetColumnNullable(columnDefinition);
+                column.Primary = InputQueryColumn.GetColumnPrimary(columnDefinition);
+                column.Identity = InputQueryColumn.GetColumnIdentity(columnDefinition);
                 column.Enabled = true;
 
-                columns[column.Name] = column;
+                columns.Add(column);
             }
-            return columns;
+            return columns.ToArray();
         }
 
         #endregion

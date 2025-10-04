@@ -9,59 +9,35 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Builder\Base.txt" />
+    <None Remove="OutputBuilder\Base.txt" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Builder\Templates - Copy\ClassBody.sbn">
+    <EmbeddedResource Include="OutputBuilder\Templates\Class.sbn">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="Builder\Templates - Copy\ClassHeader.sbn">
+    <EmbeddedResource Include="OutputBuilder\Templates\ClassBodyNamespace.sbn">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="Builder\Templates - Copy\ClassNamespace.sbn">
+    <EmbeddedResource Include="OutputBuilder\Templates\ClassBody.sbn">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="Builder\Templates - Copy\Columns.sbn">
+    <EmbeddedResource Include="OutputBuilder\Templates\Columns.sbn">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="Builder\Templates - Copy\PrivateMembers.sbn">
+    <EmbeddedResource Include="OutputBuilder\Templates\ClassHeader.sbn">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="Builder\Templates - Copy\PublicProperties.sbn">
+    <EmbeddedResource Include="OutputBuilder\Templates\SelectAll.sbn">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="Builder\Templates - Copy\SelectAll.sbn">
+    <EmbeddedResource Include="OutputBuilder\Templates\SelectOne.sbn">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="Builder\Templates - Copy\SelectOne.sbn">
+    <EmbeddedResource Include="OutputBuilder\Templates\PublicProperties.sbn">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="Builder\Templates\Class.sbn">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Builder\Templates\ClassBodyNamespace.sbn">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Builder\Templates\ClassBody.sbn">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Builder\Templates\Columns.sbn">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Builder\Templates\ClassHeader.sbn">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Builder\Templates\SelectAll.sbn">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Builder\Templates\SelectOne.sbn">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Builder\Templates\PublicProperties.sbn">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Builder\Templates\PrivateMembers.sbn">
+    <EmbeddedResource Include="OutputBuilder\Templates\PrivateMembers.sbn">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>

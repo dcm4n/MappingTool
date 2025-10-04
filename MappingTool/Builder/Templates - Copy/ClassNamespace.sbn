@@ -1,6 +1,0 @@
-﻿namespace {{ namepsace }}
-{
-
-    {{ class_body }}
-
-}

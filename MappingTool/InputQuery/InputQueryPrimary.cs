@@ -1,15 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace MappingTool.Parser
+namespace MappingTool.Input
 {
-    internal static class QueryPrimary
+    internal static class InputQueryPrimary
     {
-        #region PRIMARY
-
         //private void SetTablePrimary(Query queryCreateTable)
         //{
         //    string[] alterTablePrimaryColumns = GetPrimaryColumnsFromAlterTable(queryCreateTable.AlterQuery);
@@ -40,7 +34,5 @@ namespace MappingTool.Parser
         //    }
         //    return alterTablePrimaryColumns;
         //}
-
-        #endregion
     }
 }
